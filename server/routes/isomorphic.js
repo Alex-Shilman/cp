@@ -2,7 +2,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { RouterContext, match } from 'react-router';
-import escapeHTML from 'lodash/string/escape';
+import escapeHTML from 'lodash/escape';
 import configureStore from '../../shared/store';
 import createRootRoute from '../../shared/routes';
 
@@ -59,10 +59,10 @@ function renderHTML(componentHTML, host) {
 		  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">	
 		  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
 		  <link rel='stylesheet' href="//${host}/build/main.css" />
-		  <link rel='stylesheet' href="//${host}/css/main.css" />
+		  <link rel='stylesheet' href="//${host}/css/style.css" />
 		</head>
 		<body>
-		  <div id="AT_App">${componentHTML}</div>
+		  <div id="cp-App-Viewport">${componentHTML}</div>
 		  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 		  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
 		  <script src="//${host}/build/shared.js"></script>

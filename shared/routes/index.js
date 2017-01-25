@@ -1,5 +1,5 @@
-import App from '../Components/App';
-import Home from '../Components/Home';
+import App from '../containers/App';
+import Home from '../components/Home';
 
 export default (store) => {
     return {

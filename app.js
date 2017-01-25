@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import routes from './server/routes/index';
+import isomorphic from './server/routes/isomorphic';
 import users from './server/routes/users';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -16,7 +17,7 @@ const env = process.env.NODE_ENV || 'development';
 
 
 /*HotModuleReplacement*/
-if(process.env.WEBPACK_CONFIG && env === 'development'){
+if(env === 'development'){
     (function() {
         const webpackConfig = require(process.env.WEBPACK_CONFIG ? process.env.WEBPACK_CONFIG : './webpack.config');
         const compiler = webpack(webpackConfig);
@@ -49,7 +50,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+//app.use('/', routes);
+app.use(isomorphic);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
