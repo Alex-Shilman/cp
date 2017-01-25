@@ -1,0 +1,6 @@
+*.log
+.idea/*
+#Project client build files
+public/build/*
+#Project NPM dependencies
+node_modules/*
