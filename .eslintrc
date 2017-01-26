@@ -1,0 +1,7 @@
+{
+  "extends": "eslint:recommended",
+  "rules": {
+    "more/no-then": 0, // Temporary disable
+    "more/no-window": 0, // Temporary disable
+  }
+}

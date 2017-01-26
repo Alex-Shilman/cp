@@ -1,0 +1,13 @@
+.cp-Banner {
+  position: relative; }
+  .cp-Banner .container {
+    position: absolute;
+    position: absolute;
+    top: 19%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto; }
+  .cp-Banner h1 {
+    color: white;
+    text-align: center; }

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-
+import Footer from '../../components/Footer';
 (process.env.BROWSER) && require('./App.scss');
 
 export default class App extends Component{
@@ -12,6 +12,7 @@ export default class App extends Component{
         return(
             <div className='cp-App'>
                 { children }
+                <Footer/>
             </div>
         );
     }

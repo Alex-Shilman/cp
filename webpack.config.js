@@ -26,7 +26,7 @@ var config = {
     devtool: (env === 'production') ? 'cheap-module-source-map' : 'inline-source-map',
 
     entry: [
-        'webpack-hot-middleware/client?path=localhost:3000/__webpack_hmr',
+        'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr',
         './client/index.js'
     ],
 
@@ -104,6 +104,10 @@ var config = {
 
     postcss: function() {
         return [autoprefixer, precss]
+    },
+
+    eslint: {
+        configFile: '.eslintrc'
     }
 }
 
