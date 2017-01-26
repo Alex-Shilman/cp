@@ -1,5 +1,14 @@
 .cp-Banner {
   position: relative; }
+  .cp-Banner:after {
+    background: url("/images/head-img-overlay.png");
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; }
   .cp-Banner .container {
     position: absolute;
     position: absolute;
@@ -7,7 +16,8 @@
     left: 0;
     right: 0;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    z-index: 9999; }
   .cp-Banner h1 {
     color: white;
     text-align: center; }

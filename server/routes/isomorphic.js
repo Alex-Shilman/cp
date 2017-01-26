@@ -56,17 +56,20 @@ function renderHTML(componentHTML, host) {
 		  <meta name="author" content="">
 		  <title>My title</title>
 		  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">	
-		  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
+		  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+          <link rel="stylesheet" href="//code.getmdl.io/1.1.3/material.blue-red.min.css" />
+          <link rel="stylesheet" href="//cdn.materialdesignicons.com/1.2.65/css/materialdesignicons.min.css"> 
 		  <link rel='stylesheet' href="//${host}/build/main.css" />
 		  <link rel='stylesheet' href="//${host}/css/style.css" />
 		</head>
 		<body>
 		  <div id="cp-App-Viewport">${componentHTML}</div>
 		  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-		  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+		  <script src="//storage.googleapis.com/code.getmdl.io/1.1.3/material.min.js"></script>
 		  <script src="//${host}/build/shared.js"></script>
 		  <script src="//${host}/build/main.js"></script>
+		  
 		</body>
 		</html>
 	`;

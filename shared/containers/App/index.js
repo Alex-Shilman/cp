@@ -1,6 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import Footer from '../../components/Footer';
-(process.env.BROWSER) && require('./App.scss');
+if(process.env.BROWSER){
+    require( 'react-widgets/dist/css/react-widgets.css');
+    require('./App.scss');
+}
+
+
+
 
 export default class App extends Component{
     static propTypes = {
