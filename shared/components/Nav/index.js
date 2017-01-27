@@ -30,8 +30,8 @@ export default class Navigation extends Component{
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Nav>
-                            <NavItem eventKey={1} href="#">Car Values</NavItem>
-                            <NavItem eventKey={2} href="#">Sell My Car</NavItem>
+                            <NavItem eventKey={1} href="#">Sell My Car</NavItem>
+                            <NavItem eventKey={2} href="#">Car Values</NavItem>
                             <NavDropdown eventKey={3} title="Questions" id="basic-nav-dropdown">
                                 <MenuItem eventKey={3.1}>Action</MenuItem>
                                 <MenuItem eventKey={3.2}>Another action</MenuItem>
@@ -42,13 +42,13 @@ export default class Navigation extends Component{
                         </Nav>
 
                         <Nav pullRight>
-                            <NavDropdown eventKey={3} title={<Person title="My Account"/>} id="basic-nav-dropdown">
-                                <MenuItem eventKey={3.1}>Sign up</MenuItem>
-                                <MenuItem eventKey={3.2}>Sign in</MenuItem>
+                            <NavDropdown eventKey={4} title={<Person title="My Account"/>} id="basic-nav-dropdown">
+                                <MenuItem eventKey={4.1}>Sign up</MenuItem>
+                                <MenuItem eventKey={4.2}>Sign in</MenuItem>
                                 <MenuItem divider />
-                                <MenuItem eventKey={3.3}>Tips</MenuItem>
+                                <MenuItem eventKey={4.3}>Tips</MenuItem>
                                 <MenuItem divider />
-                                <MenuItem eventKey={3.3}>Price Alerts</MenuItem>
+                                <MenuItem eventKey={4.3}>Price Alerts</MenuItem>
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>

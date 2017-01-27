@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardActions } from 'react-mdl/lib/Card';
 import SearchTabs from './components/SearchTabs'
 
 (process.env.BROWSER) && require('./GuestSearch.scss');
