@@ -1,17 +1,59 @@
 import React, { Component } from 'react';
+import Navbar from 'react-bootstrap/lib/Navbar';
+import Nav from 'react-bootstrap/lib/Nav';
+import NavItem from 'react-bootstrap/lib/NavItem';
+import NavDropdown from 'react-bootstrap/lib/NavDropdown';
+import MenuItem from 'react-bootstrap/lib/MenuItem';
 
 (process.env.Browser) && require('./Nav.scss');
 
-export default class Nav extends Component{
+export default class Navigation extends Component{
     render(){
+        const Person = ({title}) => (
+            <span>
+                <svg className="person" style={{width:22, marginRight:10}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <circle className="colorable svg-white-default" stroke="currentColor" fill="none" cx="12" cy="10" r="3.5"/>
+                    <path className="colorable svg-white-default" stroke="currentColor" fill="none" d="M12,14c-4,0-7.21,2.67-7.47,6.05a11,11,0,0,0,14.95,0C19.21,16.67,16,14,12,14Z"/>
+                    <path class="colorable svg-white-default" stroke="currentColor" fill="none" d="M23,12A11,11,0,1,0,4.53,20.05C4.79,16.67,8,14,12,14s7.21,2.67,7.47,6.05A11,11,0,0,0,23,12Z"/>
+                </svg>
+                { title }
+            </span>
+        );
+
         return(
-            <nav className="cp-Nav navbar navbar-inverse navbar-fixed-top">
+            <Navbar inverse fixedTop className="cp-Nav">
                 <div className="container">
-                    <div className="navbar-header">
-                        <a className="navbar-brand" href="/">CarPatron</a>
-                    </div>
+                    <Navbar.Header>
+                        <Navbar.Brand>
+                            <a href="/">CarPatron</a>
+                        </Navbar.Brand>
+                    </Navbar.Header>
+                    <Navbar.Collapse>
+                        <Nav>
+                            <NavItem eventKey={1} href="#">Car Values</NavItem>
+                            <NavItem eventKey={2} href="#">Sell My Car</NavItem>
+                            <NavDropdown eventKey={3} title="Questions" id="basic-nav-dropdown">
+                                <MenuItem eventKey={3.1}>Action</MenuItem>
+                                <MenuItem eventKey={3.2}>Another action</MenuItem>
+                                <MenuItem eventKey={3.3}>Something else here</MenuItem>
+                                <MenuItem divider />
+                                <MenuItem eventKey={3.3}>Separated link</MenuItem>
+                            </NavDropdown>
+                        </Nav>
+
+                        <Nav pullRight>
+                            <NavDropdown eventKey={3} title={<Person title="My Account"/>} id="basic-nav-dropdown">
+                                <MenuItem eventKey={3.1}>Sign up</MenuItem>
+                                <MenuItem eventKey={3.2}>Sign in</MenuItem>
+                                <MenuItem divider />
+                                <MenuItem eventKey={3.3}>Tips</MenuItem>
+                                <MenuItem divider />
+                                <MenuItem eventKey={3.3}>Price Alerts</MenuItem>
+                            </NavDropdown>
+                        </Nav>
+                    </Navbar.Collapse>
                 </div>
-            </nav>
+            </Navbar>
         );
     }
 }

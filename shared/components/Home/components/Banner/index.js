@@ -4,6 +4,10 @@ import GuestSearch from '../../../Search/components/GuestSearch';
 (process.env.BROWSER) && require('./Banner.scss');
 
 export default class Banner extends Component{
+
+    componentDidMount(){
+
+    }
     render(){
         return (
             <div className="cp-Banner">

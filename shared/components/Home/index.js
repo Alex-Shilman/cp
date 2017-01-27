@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 import Banner from './components/Banner';
-import Nav from '../Nav';
+import Navigation from '../Nav';
 
 (process.env.BROWSER) && require('./Home.scss');
 
@@ -10,7 +10,7 @@ export default class Home extends Component {
     render(){
         return (
             <div className="cp-Home">
-                <Nav />
+                <Navigation />
                 <Banner />
                 <div className="container">
                     <Row>

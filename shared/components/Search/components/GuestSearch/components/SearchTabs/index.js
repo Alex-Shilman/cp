@@ -14,15 +14,9 @@ var carMakes = require('../../../../carMakes.json');
 (process.env.BROWSER) && require('./SearchTabs.scss');
 export default class SearchTabs extends Component{
     state = {
-        activeTab:1,
+        activeTab:0,
         make: null,
         type: null
-    }
-
-    _getTypes = () => {
-        debugger;
-        return _(carMakes).find({value: this.state.make}).models;
-        ;
     }
 
     render(){
@@ -39,7 +33,9 @@ export default class SearchTabs extends Component{
                     <Tab>Certified Pre-Owned</Tab>
                 </Tabs>
                 <section>
+                    {/*
                     <div>Content of Tab {this.state.activeTab}</div>
+                    */}
                     <Row>
                         <Col md={4}>
                             <FormGroup>
@@ -50,6 +46,7 @@ export default class SearchTabs extends Component{
                                     textField="title"
                                     value={make ? make.value : ""}
                                     caseSensitive={false}
+                                    filter="contains"
                                     onChange={value => this.setState({make: value})}
                                 />
                             </FormGroup>
@@ -58,11 +55,13 @@ export default class SearchTabs extends Component{
                             <FormGroup>
                                 <DropdownList
                                     placeholder="Enter Car Model"
+                                    disabled={!make}
                                     data={make ? make.models : []}
                                     valueField="value"
                                     textField="title"
                                     value={this.state.type || ""}
                                     caseSensitive={false}
+                                    filter="contains"
                                     onChange={value => this.setState({type: value})}
                                 />
                             </FormGroup>
@@ -72,7 +71,7 @@ export default class SearchTabs extends Component{
                                 <InputGroup>
                                     <FormControl type="text" placeholder="Entet Zip"/>
                                     <InputGroup.Addon>
-                                        <Glyphicon glyph="music" />
+                                        <Glyphicon glyph="map-marker" />
                                     </InputGroup.Addon>
                                 </InputGroup>
                             </FormGroup>

@@ -22,9 +22,10 @@ store.subscribe(throttle(() => {
 }, 1000));
 
 
-render(
-    <Provider store={store}>
-        <Router history={browserHistory} routes={createRootRoute(store)}></Router>
-    </Provider>,
-    document.getElementById('cp-App-Viewport')
-);
+    render(
+        <Provider store={store}>
+            <Router history={browserHistory} routes={createRootRoute(store)}></Router>
+        </Provider>,
+        document.getElementById('cp-App-Viewport')
+    );
+
