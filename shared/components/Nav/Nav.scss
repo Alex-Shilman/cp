@@ -4,6 +4,36 @@
   border-color: #080808;
   color:white;
 
+  .navbar-nav{
+    a{
+      color:white!important;
+
+      &:hover, &:focus{
+        background-image:none;
+        background:none;
+        box-shadow:none;
+        color:#ff690f!important;
+      }
+    }
+
+    .open{
+      a{
+        background-image:none;
+        background:none;
+        box-shadow:none;
+        color:#ff690f;
+
+        &:hover, &:focus{
+          background-image:none;
+          background:none;
+          box-shadow:none;
+          color:#ff690f;
+        }
+
+      }
+    }
+  }
+
 
   ul.dropdown-menu{
     margin-top:7px;
@@ -21,6 +51,10 @@
       line-height: 1;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+    }
+
+    a{
+      color:black!important;
     }
   }
 }

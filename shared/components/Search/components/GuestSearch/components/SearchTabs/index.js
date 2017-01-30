@@ -37,7 +37,7 @@ export default class SearchTabs extends Component{
                     <div>Content of Tab {this.state.activeTab}</div>
                     */}
                     <Row>
-                        <Col md={4}>
+                        <Col md={4} className="cp-search-cols">
                             <FormGroup>
                                 <DropdownList
                                     placeholder="Enter Car Make"
@@ -51,7 +51,7 @@ export default class SearchTabs extends Component{
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={4}>
+                        <Col md={4} className="cp-search-cols">
                             <FormGroup>
                                 <DropdownList
                                     placeholder="Enter Car Model"
@@ -66,7 +66,7 @@ export default class SearchTabs extends Component{
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={2}>
+                        <Col md={2} className="cp-search-cols">
                             <FormGroup>
                                 <InputGroup>
                                     <FormControl type="text" placeholder="Entet Zip"/>
@@ -78,7 +78,7 @@ export default class SearchTabs extends Component{
 
                         </Col>
 
-                        <Col md={2}>
+                        <Col md={2} className="cp-search-cols">
                             <Button raised colored ripple>Search</Button>
                         </Col>
                     </Row>
