@@ -1,7 +1,7 @@
 *.log
 .idea/*
 #Project client build files
-public/build/
+#public/build/
 #Project NPM dependencies
 node_modules/
 .DS_Store
