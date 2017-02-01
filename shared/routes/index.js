@@ -1,6 +1,7 @@
 import App from '../containers/App';
 import Home from '../components/Home';
 
+
 export default (store) => {
     return {
         path: '/',
@@ -8,7 +9,9 @@ export default (store) => {
         indexRoute: {
             component: Home
         },
-        childRoutes: []
+        childRoutes: [
+            require('../containers/NotFound/routes')(store)
+        ]
     }
 }
 
