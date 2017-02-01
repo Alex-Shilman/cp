@@ -5,8 +5,10 @@
   "scripts": {
     "start": "node server",
     "start-dev": "nodemon server",
-    "build-dev": "webpack",
-    "postinstall" : "webpack"
+    "build-dev": "webpack"
+  },
+  "engines": {
+    "node": ">=5.6.0"
   },
   "dependencies": {
     "bluebird": "^3.4.7",
@@ -45,7 +47,6 @@
     "redux-thunk": "^2.1.0",
     "serve-favicon": "~2.3.0",
     "url": "^0.11.0"
-
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
