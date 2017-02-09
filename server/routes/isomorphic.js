@@ -1,11 +1,13 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import serializeJs  from 'serialize-javascript';
 import { Provider } from 'react-redux';
 import { RouterContext, match } from 'react-router';
 import escapeHTML from 'lodash/escape';
 import configureStore from '../../shared/store';
 import createRootRoute from '../../shared/routes';
-
+import clientConfig from '../../shared/config';
+import { fetchComponentsData } from '../utils';
 
 module.exports = (req, res) => {
     console.log('Isomorphic');
@@ -30,21 +32,35 @@ module.exports = (req, res) => {
             res.status(500).send(error.message);
         } else if (!renderProps) {
         res.status(404).send('Not found');
-    } else {
-        const componentHtml = renderToString(
-            <Provider store={store}>
-                <RouterContext { ...renderProps } />
-            </Provider>
-    );
-        //console.log('----------');
-        //console.log('ComponentHtml', componentHtml);
-        res.set('Content-Type', 'text/html');
-        res.end(renderHTML(componentHtml, host));
+        } else {
+            fetchComponentsData({
+                dispatch  : store.dispatch,
+                components: renderProps.components,
+                params    : renderProps.params,
+                query     : renderProps.query
+        }).then(() => {
+            const initialState = store.getState();
+            const componentHtml = renderToString(
+                <Provider store={store}>
+                    <RouterContext { ...renderProps } />
+                </Provider>
+            );
+            return renderHTML(componentHtml, host, initialState, clientConfig);
+        }).then(html => {
+            //console.log('----------');
+            //console.log('ComponentHtml', componentHtml);
+            res.set('Content-Type', 'text/html');
+            res.end(html);
+        }).catch(err => {
+            console.log(err.stack);
+            res.end(err.message);
+        });
+
     }
 });
 }
 
-function renderHTML(componentHTML, host) {
+function renderHTML(componentHTML, host, initialState, config) {
     return `
 		<!DOCTYPE html>
 		<html>
@@ -65,6 +81,10 @@ function renderHTML(componentHTML, host) {
 		</head>
 		<body>
 		  <div id="cp-App-Viewport">${componentHTML}</div>
+		  <script type="application/javascript">
+		    window.__CONFIG__ = ${serializeJs(config, { isJSON: true })};
+		    window.__INITIAL_STATE = ${serializeJs(initialState, { isJSON: true })};
+		  </script>
 		  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 		  <script src="//storage.googleapis.com/code.getmdl.io/1.1.3/material.min.js"></script>
 		  <script src="//${host}/build/shared.js"></script>

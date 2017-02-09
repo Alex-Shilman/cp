@@ -10,6 +10,7 @@ export default (store) => {
             component: Home
         },
         childRoutes: [
+            require('../containers/Cars/routes')(store),
             require('../containers/NotFound/routes')(store)
         ]
     }

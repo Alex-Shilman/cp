@@ -3,19 +3,19 @@ import {
     applyMiddleware,
     combineReducers
 } from 'redux';
-import {
-    reducer as formReducer
-} from 'redux-form';
-
+import { reducer as formReducer } from 'redux-form';
+import { showCarsReducer } from '../reducers';
 import reduxThunk from 'redux-thunk';
+
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
 export function createReducer(asyncReducers) {
     return combineReducers({
         form: formReducer,
+        cars: showCarsReducer,
         ...asyncReducers
-});
+    });
 }
 
 export default function configureStore(initialState) {

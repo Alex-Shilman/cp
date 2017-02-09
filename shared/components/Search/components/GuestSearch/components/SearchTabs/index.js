@@ -19,8 +19,8 @@ var tabsValues = [{value: "used", desc: "Used Cars"}, {value: "new", desc:"New"}
 export default class SearchTabs extends Component{
     state = {
         activeTab:0,
-        make: null,
-        type: null,
+        make: 'all',
+        type: 'all',
         zip: '1234'
     }
 
@@ -29,9 +29,8 @@ export default class SearchTabs extends Component{
         const { state: { activeTab, make, type, zip }, props: { router } } = this;
         router.push({
             pathname: `/search-results/${tabsValues[activeTab].value}`,
-            query:  { make, type, zip}
+            query:  { make: make.value, type: type.value, zip }
         });
-        debugger;
     }
 
     render(){

@@ -7,7 +7,9 @@ import { loadState, saveState } from './localStorage';
 import configureStore from '../shared/store';
 import createRootRoute from '../shared/routes';
 const persistedState = loadState();
-let store = configureStore(persistedState);
+const initialState = window.__INITIAL_STATE__ || {};
+
+let store = configureStore({...initialState, ...persistedState});
 /**
  *   list all state to save in localStorage
  **/

@@ -1,9 +1,7 @@
-var express = require('express');
-var router = express.Router();
+import Cars from './Cars';
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-module.exports = router;
+export default function () {
+    return {
+        cars: new Cars()
+    }
+}
