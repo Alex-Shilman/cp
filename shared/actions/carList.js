@@ -9,11 +9,17 @@ export const loadCarList = ({params = {}, query = {}}) => {
             type: LOAD_CARLIST_REQUEST
         });
         debugger;
-        return api.cars.show(params, query).then(data =>
+        return api.cars.show(params, query).then(data => {
+            debugger;
             dispatch({
                 payload: data,
                 type: LOAD_CARLIST_SUCCESS
-            })
-        );
+            });
+        }).catch(error => {
+            dispatch({
+                type: LOAD_CARLIST_FAIL,
+                error
+            });
+        });
     }
 }

@@ -1,5 +1,22 @@
-{
-  "make" : "Ford",
-  "model": "F-150",
-  "year" : "2016"
-}
+[
+  {
+    "make" : "Ford",
+    "model": "F-150",
+    "year" : "2016"
+  },
+  {
+    "make" : "Ford",
+    "model": "Mustang",
+    "year" : "2016"
+  },
+  {
+    "make" : "Ford",
+    "model": "Taurus",
+    "year" : "2016"
+  },
+  {
+    "make" : "Ford",
+    "model": "Escape",
+    "year" : "2016"
+  }
+]

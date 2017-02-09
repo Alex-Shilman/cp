@@ -6,11 +6,12 @@ import {
 
 const DEFAULT_STATE = {
     data      : null,
-    isLoading : false,
+    isLoading : true,
     error     : null
 }
 
 export const showCarsReducer = (state = DEFAULT_STATE, action) => {
+    debugger;
     switch (action.type){
         case LOAD_CARLIST_REQUEST:{
             return {

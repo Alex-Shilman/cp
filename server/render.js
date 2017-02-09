@@ -2,7 +2,7 @@ const renderPromise = (req, res, promise) => {
     console.log('Outside renderPromise');
     return promise.then(data => {
         console.log('Inside renderPromise');
-        return res.json({...data, status: 1 });
+        return res.json({cars: data, status: 1 });
     }).catch(error => {
         console.error('REQUEST URL ',    req.url);
         console.error('REQUEST PARAMS ', req.params);
@@ -10,7 +10,7 @@ const renderPromise = (req, res, promise) => {
         console.error('ERROR ',          error.stack);
         console.error('----------------------------');
 
-        res.send({
+        res.status(500).json({
             status:0,
             error:{
                 code: 'UNKNOWN_ERROR',
