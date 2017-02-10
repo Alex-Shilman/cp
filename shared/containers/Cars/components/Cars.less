@@ -1,0 +1,38 @@
+@import "../../../assets/mixins.less";
+@import "../../../assets/palette.less";
+@import "../../../assets/media.less";
+
+.cp-Cars{
+  margin:0 auto;
+  position:relative;
+  width:100%;
+  box-sizing:border-box;
+  overflow: hidden;
+  display:flex;
+  flex-direction:column;
+  background-color: @background-color;
+}
+
+.cp-Cars__content {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 300px;
+  max-width: 800px;
+}
+
+.cp-Cars__grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-Cars__car-card {
+  margin: 10px;
+  width: 300px;
+  height: 394px;
+}

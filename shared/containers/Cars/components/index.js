@@ -1,21 +1,41 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import connectDataFetchers from '../../../lib/connectDataFetchers';
-import { loadCarList } from '../../../actions/carList';
-import Container from '../../../components/common/Container';
+import React, { Component, PropTypes }  from 'react';
+import { connect }                      from 'react-redux';
+import Spinner                          from 'react-mdl/lib/Spinner';
+import connectDataFetchers              from '../../../lib/connectDataFetchers';
+import { loadCarList }                  from '../../../actions/carList';
+import Container                        from '../../../components/common/Container';
+import CarCard                          from './CarCard';
+import ReactList                        from 'react-list';
 
+import './Cars.less';
 
 class Cars extends Component {
-    _renderCars = (cars) => {
-        return cars.map(car => (
-            <div>
-                <span>{car.make}</span>
-                <span>{car.model}</span>
-                <span>{car.year}</span>
-            </div>
-        ))
+    _renderCarsGrid = (items, ref) => {
+        return (
+          <div className="cp-Cars__grid-container" ref={ref}>
+              <div className="cp-Cars__grid">
+                  { items }
+              </div>
+          </div>
+        );
     }
+
+    _renderCar = (index, key) => {
+        debugger;
+        const { data: { cars } } = this.props;
+        const car = cars[index];
+        return (
+            <CarCard
+                className="cp-Cars__car-card"
+                make={car.make}
+                model={car.model}
+                year={car.year}
+                image={car.image}
+                key={key}
+            />
+        );
+    }
+
     render(){
         const { data, isLoading, error } = this.props;
         return(
@@ -24,9 +44,15 @@ class Cars extends Component {
              title="Car List">
               {
                   (isLoading)
-                    ? 'Loading...'
+                    ? <Spinner />
                     : (data && data.cars.length)
-                        ? this._renderCars(data.cars)
+                        ? <ReactList
+                            itemRenderer={this._renderCar}
+                            itemsRenderer={this._renderCarsGrid}
+                            length={data.cars.length}
+                            pageSize={24}
+                            type="simple"
+                          />
                         : 'There is no data'
               }
           </Container>

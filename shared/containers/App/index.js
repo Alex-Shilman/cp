@@ -3,7 +3,7 @@ import Footer from '../../components/Footer';
 import Navigation from '../../components/Nav';
 if(process.env.BROWSER){
     require( 'react-widgets/dist/css/react-widgets.css');
-    require('./App.scss');
+    require('./App.less');
 }
 
 
