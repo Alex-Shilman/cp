@@ -2,8 +2,8 @@ global.Promise        = require('bluebird'); //for node 0.10
 var path              = require('path');
 var webpack           = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var AssetsPlugin      = require('assets-webpack-plugin');
 var env = process.env.NODE_ENV || 'development';
+
 const babelSettings = {
     presets: ['react', 'es2015', 'stage-0'],
     plugins: ['transform-decorators-legacy'],
@@ -97,7 +97,6 @@ var config = {
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        //new AssetsPlugin({path: path.join(__dirname, 'etc')}),
         new webpack.NoErrorsPlugin()
         /*,
          new webpack.optimize.UglifyJsPlugin()

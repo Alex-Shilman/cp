@@ -8,3 +8,28 @@
   text-decoration: none;
   color: @text-color;
 }
+
+.cp-CarCard__info {
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  .cp-CarCard__avatar {
+    width: @AVATAR_SIZE;
+    height: @AVATAR_SIZE;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .cp-CarCard__name-author {
+    margin-left: 10px;
+    width: calc(~"100% -" @AVATAR_SIZE ~ "- 20px");
+  }
+}
+
+.cp-CarCard__media {
+  min-height: 200px;
+  cursor: default;
+  padding: 0;
+  position: relative;
+}

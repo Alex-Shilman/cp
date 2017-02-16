@@ -7,7 +7,7 @@ import Container                        from '../../../components/common/Contain
 import CarCard                          from './CarCard';
 import ReactList                        from 'react-list';
 
-import './Cars.less';
+(process.env.BROWSER) && require('./Cars.less');
 
 class Cars extends Component {
     _renderCarsGrid = (items, ref) => {
