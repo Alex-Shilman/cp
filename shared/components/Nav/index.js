@@ -9,6 +9,8 @@ import MenuItem from 'react-bootstrap/lib/MenuItem';
 
 export default class Navigation extends Component{
     render(){
+        const { signIn } = this.props;
+
         const Person = ({title}) => (
             <span>
                 <svg className="person" style={{width:22, marginRight:10}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -43,8 +45,8 @@ export default class Navigation extends Component{
 
                         <Nav pullRight>
                             <NavDropdown eventKey={4} title={<Person title="My Account"/>} id="basic-nav-dropdown">
-                                <MenuItem eventKey={4.1}>Sign up</MenuItem>
-                                <MenuItem eventKey={4.2}>Sign in</MenuItem>
+                                <MenuItem eventKey={4.1} onClick={signIn}>Sign up</MenuItem>
+                                <MenuItem eventKey={4.2} onClick={signIn}>Sign in</MenuItem>
                                 <MenuItem divider />
                                 <MenuItem eventKey={4.3}>Tips</MenuItem>
                                 <MenuItem divider />

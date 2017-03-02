@@ -1,16 +1,21 @@
-import express from 'express';
-import path  from 'path';
-//import favicon from 'serve-favicon';
-import logger from 'morgan';
-import helmet from 'helmet';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
-import routes from './server/routes/index';
-import isomorphic from './server/routes/isomorphic';
-import users from './server/routes/users';
-import webpack from 'webpack';
+'use strict';
+
+import express              from 'express';
+import path                 from 'path';
+//import favicon            from 'serve-favicon';
+import logger               from 'morgan';
+import helmet               from 'helmet';
+//import cookieParser         from 'cookie-parser';
+//import bodyParser           from 'body-parser';
+import mongoose             from 'mongoose';
+import isomorphic           from './server/routes/isomorphic';
+import webpack              from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import passport             from 'passport';
+import configPassport       from './server/config/passport';
+import configExpress        from './server/config/express';
+import connectDB            from './server/config/db';
 
 const app = express();
 const env = process.env.NODE_ENV || 'development';
@@ -43,15 +48,23 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(helmet());
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+//app.use(helmet());
+//app.use(logger('dev'));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', routes);
-//app.use('/users', users);
+/* Mongoose */
+connectDB(mongoose);
+mongoose.connection.on('error', console.error);
+mongoose.connection.on('disconnected', connectDB);
+
+configExpress(app, passport);
+configPassport(app, passport);
+
+/* Routes */
+app.use('/auth', require('./server/routes/auth')(app, passport));
 app.use('/api/v1', require('./server/routes/api')(app));
 app.use(isomorphic);
 // catch 404 and forward to error handler

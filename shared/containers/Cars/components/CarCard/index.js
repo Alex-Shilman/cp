@@ -32,9 +32,12 @@ class CarCard extends Component{
                         src={image}
                     />
                 </div>
-                <div className="cp-CarCard__description">
-                    {`${year} ${make} ${model}`}
+                <div className="cp-CarCard__content">
+                    <div className="cp-CarCard__description">
+                        {`${year} ${make} ${model}`}
+                    </div>
                 </div>
+
                 <CardActions
                     border
                     className="cp-CarCard__actions">
@@ -46,10 +49,8 @@ class CarCard extends Component{
                         />
                     </div>
                     <Button
-                        colored
                         ripple
-                        className = 'cp-CarCard__more-button'
-                        raised    = {true}>
+                        className = 'cp-CarCard__more-button'>
                         View details
                     </Button>
                 </CardActions>
