@@ -4,4 +4,9 @@
 #public/build/
 #Project NPM dependencies
 node_modules/
+etc/
 .DS_Store
+.idea/
+public/js/
+shared/reducers/userReducer.js
+shared/utils/

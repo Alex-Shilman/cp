@@ -11,13 +11,14 @@ export default class LoginDialog extends Component{
     }
 
     openLink = (URL) => {
+        debugger;
         window.open(URL,  '_self')
     }
 
     onSocialLogin = (type) => {
         debugger;
-        let redirectUrl = `/auth/${type}`;
-        this.openLink();
+        let redirectUrl = `/auth/${type}?redirectTo=${window.location.pathname}`;
+        this.openLink(redirectUrl);
     }
 
     onEmailLogin = () => {

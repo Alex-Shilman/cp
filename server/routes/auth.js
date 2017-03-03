@@ -11,7 +11,7 @@ const routes = (app, passport) => {
         passport.authenticate('google', {failureRedirect: '/login'}),
         (req, res) => {
             // Successful authentication, redirect home.
-            res.redirect('/profile');
+            res.redirect(`/profile`);
         });
     router.get('/facebook/callback',
         passport.authenticate('facebook', {failureRedirect: '/login'}),

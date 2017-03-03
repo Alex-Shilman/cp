@@ -4,7 +4,7 @@ import {
     combineReducers
 } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import { showCarsReducer } from '../reducers';
+import { showCarsReducer, userReducer } from '../reducers';
 import reduxThunk from 'redux-thunk';
 
 
@@ -14,6 +14,7 @@ export function createReducer(asyncReducers) {
     return combineReducers({
         form: formReducer,
         cars: showCarsReducer,
+        user: userReducer,
         ...asyncReducers
     });
 }

@@ -11,7 +11,10 @@ import { fetchComponentsData } from '../utils';
 
 module.exports = (req, res) => {
     console.log('Isomorphic');
-    let store = configureStore();
+    if (req.user) {
+        console.log('User Is', req.user);
+    }
+    let store = configureStore({user: req.user});
     let routes = createRootRoute(store);
     const host = req.headers.host;
     match({
@@ -40,6 +43,7 @@ module.exports = (req, res) => {
                 query     : renderProps.query
         }).then(() => {
             const initialState = store.getState();
+            console.log('initialState', initialState);
             const componentHtml = renderToString(
                 <Provider store={store}>
                     <RouterContext { ...renderProps } />
@@ -83,7 +87,7 @@ function renderHTML(componentHTML, host, initialState, config) {
 		  <div id="cp-App-Viewport">${componentHTML}</div>
 		  <script type="application/javascript">
 		    window.__CONFIG__ = ${serializeJs(config, { isJSON: true })};
-		    window.__INITIAL_STATE = ${serializeJs(initialState, { isJSON: true })};
+		    window.__INITIAL_STATE__ = ${serializeJs(initialState, { isJSON: true })};
 		  </script>
 		  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 		  <script src="//storage.googleapis.com/code.getmdl.io/1.1.3/material.min.js"></script>
