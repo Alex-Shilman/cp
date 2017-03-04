@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Dialog                          from '../common/Dialog';
 import Icon                            from '../common/Icon';
+
 (process.env.BROWSER) && require('./LoginDialog.less');
 
 export default class LoginDialog extends Component{
@@ -17,7 +18,7 @@ export default class LoginDialog extends Component{
 
     onSocialLogin = (type) => {
         debugger;
-        let redirectUrl = `/auth/${type}?redirectTo=${window.location.pathname}`;
+        let redirectUrl = `/auth/${type}?continue=${(window.location.pathname + window.location.search).replace(/&/g, '%26')}`;
         this.openLink(redirectUrl);
     }
 

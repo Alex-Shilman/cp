@@ -35,7 +35,7 @@ export default class ApiClient {
 
            return res.json();
         }).then(data => {
-            console.log('then', data);
+           // console.log('then', data);
 
             return (data && data.status === 1)
                     ? data

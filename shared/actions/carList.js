@@ -4,7 +4,12 @@ export const LOAD_CARLIST_SUCCESS = 'LOAD_CARLIST_SUCCESS';
 export const LOAD_CARLIST_FAIL    = 'LOAD_CARLIST_FAIL';
 
 export const loadCarList = ({params = {}, query = {}}) => {
-    return dispatch => {
+    return (dispatch, getState) => {
+        debugger;
+        const { cars: { data } } = getState();
+        debugger;
+        if (data && data.cars) return;
+
         dispatch({
             type: LOAD_CARLIST_REQUEST
         });

@@ -2,7 +2,8 @@
   background-color: rgba(0, 0, 0, 0.7);
   background-image: none;
   border-color: #080808;
-  color: white; }
+  color: white;
+  z-index: 99999; }
   .cp-Nav .navbar-nav a {
     color: white !important; }
     .cp-Nav .navbar-nav a:hover, .cp-Nav .navbar-nav a:focus {

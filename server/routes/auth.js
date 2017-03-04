@@ -11,7 +11,7 @@ const routes = (app, passport) => {
         passport.authenticate('google', {failureRedirect: '/login'}),
         (req, res) => {
             // Successful authentication, redirect home.
-            res.redirect(`/profile`);
+            res.redirect(req.session.continueTo);
         });
     router.get('/facebook/callback',
         passport.authenticate('facebook', {failureRedirect: '/login'}),
@@ -26,7 +26,14 @@ const routes = (app, passport) => {
     // /auth/google/return
     // Authentication with google requires an additional scope param, for more info go
     // here https://developers.google.com/identity/protocols/OpenIDConnect#scope-param
-    router.get('/google', passport.authenticate('google', {
+    router.get('/google',
+        (req, res, next) => {
+            console.log('-------------------');
+            req.session.continueTo = req.query.continue;
+            console.log('continue', req.session.continueTo);
+            next();
+        },
+        passport.authenticate('google', {
         scope: [
             'https://www.googleapis.com/auth/plus.login',
             'https://www.googleapis.com/auth/plus.me',

@@ -22,13 +22,7 @@ module.exports = (req, res) => {
         location: req.url
     }, (error, redirectLocation, renderProps) => {
 
-        /*
-         console.log('Routes', routes);
-         console.log('----------');
-         console.log('Store', store);
-         console.log('----------');
-         console.log('RenderProps', renderProps);
-         */
+
         if (redirectLocation) {
             res.redirect(301, redirectLocation.pathname + redirectLocation.search);
         } else if (error) {
@@ -54,9 +48,9 @@ module.exports = (req, res) => {
             //console.log('----------');
             //console.log('ComponentHtml', componentHtml);
             res.set('Content-Type', 'text/html');
-            res.end(html);
+            res.send(html);
         }).catch(err => {
-            console.log(err.stack);
+            console.error('Error', err.stack);
             res.end(err.message);
         });
 
@@ -75,6 +69,7 @@ function renderHTML(componentHTML, host, initialState, config) {
 		  <meta name="description" content="">
 		  <meta name="author" content="">
 		  <title>My title</title>
+		  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
 		  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 		  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
@@ -86,11 +81,11 @@ function renderHTML(componentHTML, host, initialState, config) {
 		<body>
 		  <div id="cp-App-Viewport">${componentHTML}</div>
 		  <script type="application/javascript">
-		    window.__CONFIG__ = ${serializeJs(config, { isJSON: true })};
+		    window.__CONFIG__        = ${serializeJs(config, { isJSON: true })};
 		    window.__INITIAL_STATE__ = ${serializeJs(initialState, { isJSON: true })};
 		  </script>
 		  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-		  <script src="//storage.googleapis.com/code.getmdl.io/1.1.3/material.min.js"></script>
+		  <script type="text/javascript" src="//storage.googleapis.com/code.getmdl.io/1.1.3/material.min.js"></script>
 		  <script src="//${host}/build/shared.js"></script>
 		  <script src="//${host}/build/main.js"></script>
 		  

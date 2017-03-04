@@ -8,7 +8,7 @@ export default class Show extends Base{
     }
 
     async _findOneCar(data){
-        console.log('DATA', data)
+        //console.log('DATA', data)
         const _cars = await fsp.readFileAsync(`${__dirname}/cars.json`, 'utf8');
         //const cars = JSON.parse(_car);
 

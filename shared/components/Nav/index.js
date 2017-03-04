@@ -58,8 +58,12 @@ export default class Navigation extends Component{
                             <NavDropdown eventKey={4} title={<Person title="My Account"/>} id="basic-nav-dropdown">
                                 {
                                     (user && user.profile)
-                                        ? <MenuItem eventKey={4.1} href="auth/logout">Sign out</MenuItem>
+                                        ? <MenuItem eventKey={4.1} href="/auth/logout">Sign out</MenuItem>
                                         : <MenuItem eventKey={4.1} onClick={signIn}>Sign in</MenuItem>
+                                }
+                                {
+                                    (user && user.profile)
+                                        && <MenuItem eventKey={4.1} href="/auth/logout">My Profile</MenuItem>
                                 }
                                 {
                                     !(user && user.profile)

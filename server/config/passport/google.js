@@ -37,8 +37,7 @@ export default new GoogleStrategy({
     user.profile.gender = profile._json.gender;
     user.profile.picture = profile._json.image.url;
     done(null, user);
-    console.log('---------------');
-    console.log('redirectTo', req.query.redirectTo);
+
     if (req.user) {
        User.findOne({google: profile.id}, function (err, existingUser) {
            User.findOne({google: profile.id}, function (err, existingUser) {
