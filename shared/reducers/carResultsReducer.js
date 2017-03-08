@@ -11,7 +11,7 @@ const DEFAULT_STATE = {
 }
 
 export const showCarsReducer = (state = DEFAULT_STATE, action) => {
-    debugger;
+
     switch (action.type){
         case LOAD_CARLIST_REQUEST:{
             return {
@@ -24,8 +24,8 @@ export const showCarsReducer = (state = DEFAULT_STATE, action) => {
             return{
                 ...state,
                 data      : action.payload,
-                isLoading :false,
-                error     :null
+                isLoading : false,
+                error     : null
             }
         }
 

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import User from '../../models/user';
 import config from '../../../etc/client-config.json';
-var GoogleStrategy = require('passport-google-oauth2').Strategy;
+const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 /*
  * OAuth Strategy taken modified from https://github.com/sahat/hackathon-starter/blob/master/config/passport.js
@@ -22,10 +22,10 @@ var GoogleStrategy = require('passport-google-oauth2').Strategy;
  * as options specifying a client ID, client secret, and callback URL.
  */
 export default new GoogleStrategy({
-    clientID: config.googleAuth.clientID,
-    clientSecret: config.googleAuth.clientSecret,
-    callbackURL: config.googleAuth.callbackURL,
-    passReqToCallback: true
+    clientID            : config.googleAuth.clientID,
+    clientSecret        : config.googleAuth.clientSecret,
+    callbackURL         : config.googleAuth.callbackURL,
+    passReqToCallback   : true
 }, (req, accessToken, refreshToken, profile, done) => {
     var user = {};
     user.email = profile._json.emails[0].value;

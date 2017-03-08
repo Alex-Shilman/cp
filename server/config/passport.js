@@ -1,7 +1,9 @@
 import User from '../models/user';
-import google from './passport/google';
+import google   from './passport/google';
+import facebook from './passport/facebook';
+import linkedin from './passport/linkedin';
 //var local = require('./passport/local');
-//var facebook = require('./passport/facebook');
+
 
 
 export default function(app, passport, config) {
@@ -20,6 +22,7 @@ export default function(app, passport, config) {
 
     //use the following strategies
     passport.use(google);
-    //passport.use(facebook);
+    passport.use(facebook);
+    passport.use(linkedin);
     //passport.use(local);
 };

@@ -17,7 +17,7 @@ const routes = (app, passport) => {
         passport.authenticate('facebook', {failureRedirect: '/login'}),
         (req, res) => {
             // Successful authentication, redirect home.
-            res.redirect('/profile');
+            res.redirect(req.session.continueTo);
         });
 
     // google auth
@@ -42,12 +42,40 @@ const routes = (app, passport) => {
         ]
     }));
 
-    router.get('/facebook', passport.authenticate('facebook', {
+    router.get('/facebook',
+        (req, res, next) => {
+            console.log('-------------------');
+            req.session.continueTo = req.query.continue;
+            console.log('continue', req.session.continueTo);
+            next();
+        },
+        passport.authenticate('facebook', {
         scope: [
             'public_profile',
             'email'
         ]
     }));
+
+    router.get('/linkedin',
+        (req, res, next) => {
+            req.session.continueTo = req.query.continue;
+            next();
+        },
+        passport.authenticate('linkedin', {
+            scope: [
+                'r_basicprofile',
+                'r_emailaddress'
+            ]
+        })
+    );
+
+    router.get('/linkedin/callback',
+        passport.authenticate('linkedin', { failureRedirect: '/login' }),
+        (req, res) => {
+            // Successful authentication, redirect home.
+            res.redirect(req.session.continueTo);
+        }
+    );
 
     // Google will redirect the user to this URL after authentication. Finish the
     // process by verifying the assertion. If valid, the user will be logged in.

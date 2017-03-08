@@ -5,9 +5,8 @@ export const LOAD_CARLIST_FAIL    = 'LOAD_CARLIST_FAIL';
 
 export const loadCarList = ({params = {}, query = {}}) => {
     return (dispatch, getState) => {
-        debugger;
+
         const { cars: { data } } = getState();
-        debugger;
         if (data && data.cars) return;
 
         dispatch({

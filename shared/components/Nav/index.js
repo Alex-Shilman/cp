@@ -4,7 +4,7 @@ import Nav                  from 'react-bootstrap/lib/Nav';
 import NavItem              from 'react-bootstrap/lib/NavItem';
 import NavDropdown          from 'react-bootstrap/lib/NavDropdown';
 import MenuItem             from 'react-bootstrap/lib/MenuItem';
-import {connect}            from 'react-redux';
+import { connect }          from 'react-redux';
 
 (process.env.Browser) && require('./Nav.scss');
 
