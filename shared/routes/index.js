@@ -1,4 +1,4 @@
-import App from '../containers/App';
+import App  from '../containers/App';
 import Home from '../components/Home';
 
 
@@ -11,6 +11,8 @@ export default (store) => {
         },
         childRoutes: [
             require('../containers/Cars/routes')(store),
+            require('../containers/Login/routes')(store),
+            require('../containers/User/routes')(store),
             require('../containers/NotFound/routes')(store)
         ]
     }

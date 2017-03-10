@@ -1,6 +1,6 @@
 import User              from '../../models/user';
 import config            from '../../../etc/client-config.json';
-import passportFacebook from 'passport-facebook';
+import passportFacebook  from 'passport-facebook';
 
 const facebookStrategy = passportFacebook.Strategy;
 

@@ -24,6 +24,10 @@ export default class App extends Component{
         this.setState({ isLoggingIn: true });
     }
 
+    handleClose = () => {
+        this.setState({ isLoggingIn: false });
+    }
+
     render(){
         const { children }    = this.props;
         const { isLoggingIn } = this.state;
@@ -34,7 +38,7 @@ export default class App extends Component{
 
                 <LoginDialog
                     isOpen={isLoggingIn}
-
+                    onRequestClose={this.handleClose}
                 />
                 <Footer/>
             </div>

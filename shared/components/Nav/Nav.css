@@ -3,7 +3,8 @@
   background-image: none;
   border-color: #080808;
   color: white;
-  z-index: 99999; }
+  z-index: 99999;
+  box-shadow: rgba(0, 0, 0, 0.15686) 0px 3px 10px, rgba(0, 0, 0, 0.22745) 0px 3px 10px; }
   .cp-Nav .cp-Nav_User {
     min-width: 20px; }
   .cp-Nav .cp-Nav_User-Person {

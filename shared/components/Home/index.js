@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Col from 'react-bootstrap/lib/Col';
-import Row from 'react-bootstrap/lib/Row';
-import Banner from './components/Banner';
+import Col                  from 'react-bootstrap/lib/Col';
+import Row                  from 'react-bootstrap/lib/Row';
+import Banner               from './components/Banner';
 
 
 (process.env.BROWSER) && require('./Home.scss');

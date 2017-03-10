@@ -1,10 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import Dialog                          from '../common/Dialog';
 import Icon                            from '../common/Icon';
+import EmailLogin                      from '../EmailLogin';
+import _delay                          from 'lodash/delay';
+import _bind                           from 'lodash/bind';
 
 (process.env.BROWSER) && require('./LoginDialog.less');
 
 export default class LoginDialog extends Component{
+    state = {
+        EmailLoginOpenToggle: false
+    }
+
     static propTypes = {
         isOpen         : PropTypes.bool.isRequired,
         title          : PropTypes.string,
@@ -23,11 +30,19 @@ export default class LoginDialog extends Component{
     }
 
     onEmailLogin = () => {
+        const { EmailLoginOpenToggle } = this.state;
+        this.setState({EmailLoginOpenToggle: !EmailLoginOpenToggle});
+    }
 
+    _componentDidUpdate(prevProps, prevState){
+        _delay(_bind(
+            () => { this.setState({EmailLoginOpenToggle: true})},
+        this), 1000);
     }
 
     render(){
         const { title, onSocialLogin, onEmailLogin } = this.props;
+        const { EmailLoginOpenToggle } = this.state;
 
         return (
             <div className='cp-LoginDialog'>
@@ -66,6 +81,8 @@ export default class LoginDialog extends Component{
                     <h4 className='cp-LoginDialog__title cp-LoginDialog__title--clickable' onClick={this.onEmailLogin}>
                         or use your e-mail
                     </h4>
+
+                    <EmailLogin isExtended={EmailLoginOpenToggle}/>
                 </Dialog>
             </div>
         );

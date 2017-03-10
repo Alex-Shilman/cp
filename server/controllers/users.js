@@ -1,4 +1,3 @@
-import _        from 'lodash';
 import User     from '../models/user';
 import passport from 'passport';
 

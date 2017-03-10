@@ -59,6 +59,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 connectDB(mongoose);
 mongoose.connection.on('error', console.error);
 mongoose.connection.on('disconnected', connectDB);
+process.on('SIGINT', () => {
+    mongoose.connection.close(() => {
+        console.log('App terminated, mongoose closing');
+        process.exit(0);
+    });
+});
 
 configExpress(app, passport);
 configPassport(app, passport);

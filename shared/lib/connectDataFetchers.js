@@ -1,7 +1,7 @@
-import React, { Component, PropTypes }   from 'react';
-import Promise from 'bluebird';
+import React, { Component, PropTypes }  from 'react';
+import Promise                          from 'bluebird';
 
-export default function connectDataFetchers (Component, actionCreators){
+const connectDataFetchers = (Component, actionCreators) => {
     return class DataFetchersWrapper extends Component {
 
         static propTypes = {
@@ -33,3 +33,5 @@ export default function connectDataFetchers (Component, actionCreators){
 
     }
 }
+
+export default connectDataFetchers;
