@@ -24,7 +24,7 @@ export default new facebookStrategy({
     done(null, user);
 
     if (req.user) {
-       User.findOne({facebook: profile.id}, function (err, existingUser) {
+       User.findOne({facebook: profile.id}, (err, existingUser) => {
            if (existingUser) return done(null, existingUser);
            var user             = new User();
            user.email           = profile._json.email;
@@ -33,13 +33,13 @@ export default new facebookStrategy({
            user.profile.name    = profile._json.displayName;
            user.profile.gender  = profile._json.gender;
            user.profile.picture = profile.photos[0].value;
-           user.save(function (err) {
+           user.save((err) => {
                done(err, user);
            });
 
        });
     } else {
-       User.findOne({facebook: profile.id}, function (err, existingUser) {
+       User.findOne({facebook: profile.id}, (err, existingUser) => {
            if (existingUser) return done(null, existingUser);
            var user = new User();
            user.email = profile._json.email;
@@ -48,7 +48,7 @@ export default new facebookStrategy({
            user.profile.name = profile._json.displayName;
            user.profile.gender = profile._json.gender;
            user.profile.picture = profile.photos[0].value;
-           user.save(function (err) {
+           user.save((err) => {
                done(err, user);
            });
 

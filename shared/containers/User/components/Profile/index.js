@@ -7,11 +7,11 @@ export default class Profile extends Component {
         return (
             <div className="cp-Profile">
                 <PanelGroup>
-                    <Panel header="header one">
+                    <Panel header="Account Settings">
                         Hello There
                     </Panel>
 
-                    <Panel header="header two">
+                    <Panel header="Optional">
                         Hello There
                     </Panel>
                 </PanelGroup>

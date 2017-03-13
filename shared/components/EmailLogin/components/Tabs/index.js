@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LoginForm            from '../LoginForm';
+import SignupForm           from '../SignupForm';
 const tabText = [ 'Sign up', 'Login' ];
 (process.env.BROWSER) && require('./Tabs.less');
 
@@ -44,8 +45,13 @@ export default class Tabs extends Component {
               <div style={{width: '100%'}}>
                   <div className="cp-Tabs__Slider" style={{...tabStyle}}></div>
               </div>
+              {
+                  (currentTabIndex == 1)
+                    ? <LoginForm buttonText={tabText[currentTabIndex]}/>
+                    : <SignupForm buttonText={tabText[currentTabIndex]}/>
+              }
 
-              <LoginForm buttonText={tabText[currentTabIndex]}/>
+
           </div>
         );
     }

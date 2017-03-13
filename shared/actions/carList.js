@@ -9,12 +9,9 @@ export const loadCarList = ({params = {}, query = {}}) => {
         const { cars: { data } } = getState();
         if (data && data.cars) return;
 
-        dispatch({
-            type: LOAD_CARLIST_REQUEST
-        });
-        debugger;
+        dispatch({ type: LOAD_CARLIST_REQUEST });
+
         return api.cars.show(params, query).then(data => {
-            debugger;
             dispatch({
                 payload: data,
                 type: LOAD_CARLIST_SUCCESS

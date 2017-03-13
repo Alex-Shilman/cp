@@ -3,29 +3,30 @@
  * Code modified from https://github.com/sahat/hackathon-starter
  */
 
-var bcrypt = require('bcrypt-nodejs');
-var mongoose = require('mongoose');
-var crypto = require('crypto');
+import bcrypt   from 'bcrypt-nodejs';
+import mongoose from 'mongoose';
+import crypto   from 'crypto';
 
-// Other oauthtypes to be added
 
 /*
  User Schema
  */
 
 var UserSchema = new mongoose.Schema({
+    email   : String,
     password: String,
-    tokens: Array,
+    tokens  : Array,
     profile: {
-        name: { type: String, default: ''},
-        gender: { type: String, default: ''},
-        picture: { type: String, default: ''}
+        name    : { type: String, default: ''},
+        gender  : { type: String, default: ''},
+        picture : { type: String, default: ''}
     },
-    resetPasswordToken: String,
+    resetPasswordToken  : String,
     resetPasswordExpires: Date,
-    google: {},
+    google  : {},
     facebook: {},
-    linkedin: {}
+    linkedin: {},
+    local   : {}
 });
 
 
@@ -34,10 +35,11 @@ var UserSchema = new mongoose.Schema({
  */
 UserSchema.pre('save', function(next) {
     var user = this;
+    console.log('This', this);
     if (!user.isModified('password')) return next();
-    bcrypt.genSalt(5, function(err, salt) {
+    bcrypt.genSalt(5, (err, salt) => {
         if (err) return next(err);
-        bcrypt.hash(user.password, salt, null, function(err, hash) {
+        bcrypt.hash(user.password, salt, null, (err, hash) => {
             if (err) return next(err);
             user.password = hash;
             next();
@@ -49,8 +51,8 @@ UserSchema.pre('save', function(next) {
  Defining our own custom document instance method
  */
 UserSchema.methods = {
-    comparePassword: function(candidatePassword, cb) {
-        bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    comparePassword: (candidatePassword, cb) => {
+        bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
             if(err) return cb(err);
             cb(null, isMatch);
         })

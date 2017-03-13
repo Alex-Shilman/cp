@@ -16,6 +16,37 @@ export default class ApiClient {
         });
     }
 
+    put(requestUrl, payload = {}) {
+        return this.request({
+            url: requestUrl,
+            method: 'put',
+            body: payload
+        });
+    }
+
+    patch(requestUrl, payload = {}) {
+        return this.request({
+            url: requestUrl,
+            method: 'put',
+            body: payload
+        });
+    }
+
+    post(requestUrl, payload = {}) {
+        return this.request({
+            url: requestUrl,
+            method: 'post',
+            body: payload
+        });
+    }
+
+    delete(requestUrl) {
+        return this.request({
+            url: requestUrl,
+            method: 'delete'
+        });
+    }
+
     request({ url, method, params = {}, body}){
         const urlWithQuery = `${url}?${queryString.stringify(params)}`;
 
@@ -41,5 +72,13 @@ export default class ApiClient {
                     ? data
                     : Promise.reject(data.error);
         });
+    }
+
+    setAuthToken(authToken) {
+        this.authToken = authToken;
+    }
+
+    setXRealIP(XRealIP) {
+        this.XRealIP = XRealIP;
     }
 }
