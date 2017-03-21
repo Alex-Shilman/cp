@@ -33,6 +33,7 @@ export default class ApiClient {
     }
 
     post(requestUrl, payload = {}) {
+        debugger;
         return this.request({
             url: requestUrl,
             method: 'post',
@@ -52,7 +53,11 @@ export default class ApiClient {
 
         const init = {
             method,
-            headers: { Accept: 'application/json', 'Content-Type': 'application/json' }
+            headers: {
+                Accept          : 'application/json',
+                'Content-Type'  : 'application/json'
+            },
+            credentials         : 'same-origin'
         };
 
         if (method !== 'get' && method !== 'head'){
@@ -60,14 +65,14 @@ export default class ApiClient {
         }
 
         return fetch(`${this.prefix}/${urlWithQuery}`, init).then(res => {
-           if(res.statusCode >= 400){
+           debugger;
+           if(res.status >= 400){
                throw new Error('Bad response from the server');
            }
 
            return res.json();
         }).then(data => {
-           // console.log('then', data);
-
+            debugger;
             return (data && data.status === 1)
                     ? data
                     : Promise.reject(data.error);

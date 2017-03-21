@@ -35,7 +35,6 @@ var UserSchema = new mongoose.Schema({
  */
 UserSchema.pre('save', function(next) {
     var user = this;
-    console.log('This', this);
     if (!user.isModified('password')) return next();
     bcrypt.genSalt(5, (err, salt) => {
         if (err) return next(err);
@@ -51,7 +50,7 @@ UserSchema.pre('save', function(next) {
  Defining our own custom document instance method
  */
 UserSchema.methods = {
-    comparePassword: (candidatePassword, cb) => {
+    comparePassword: function(candidatePassword, cb){
         bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
             if(err) return cb(err);
             cb(null, isMatch);

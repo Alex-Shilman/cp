@@ -7,15 +7,22 @@ import passport from 'passport';
 exports.postLogin = function(req, res, next) {
     // Do email and password validation for the server
     passport.authenticate('local', function(err, user, info) {
+        console.log('------PostLogin--------');
+        console.log('req.user', req.user);
         if(err) return next(err);
         if(!user) {
             req.flash('errors', {msg: info.message});
         }
         // Passport exposes a login() function on req (also aliased as logIn()) that can be used to establish a login session
-        req.logIn(user, function(err) {
+        req.login(user, function(err) {
+            console.log('--------LoginCallback-------');
+            console.log('req.user', req.user);
             if(err) return next(err);
             req.flash('success', { msg: 'Success! You are logged in'});
-            res.end('Success');
+            res.json({
+                user: { email: user.email, profile: user.profile },
+                status: 1
+            });
         });
     })(req, res, next);
 };
@@ -59,10 +66,14 @@ exports.postSignUp = (req, res, next) => {
 
             if(err) return next(err);
 
-            req.logIn(user, (err) => {
+            req.login(user, (err) => {
                 if(err) return next(err);
-                console.log('Successfully created');
-                res.end('Success');
+                console.log('Successfully created user', user);
+                res.json({
+                    user: { email: user.email, profile: user.profile },
+                    status: 1,
+                    redirect: '/user/profile'
+                });
             });
 
         });

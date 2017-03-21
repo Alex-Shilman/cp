@@ -10,10 +10,9 @@ import clientConfig from '../../shared/config';
 import { fetchComponentsData } from '../utils';
 
 module.exports = (req, res) => {
-    console.log('Isomorphic');
-    if (req.user) {
-        console.log('User Is', req.user);
-    }
+    console.log('-----Isomorphic-----');
+    console.log('User Is', req.user);
+
     let store = configureStore({user: req.user});
     let routes = createRootRoute(store);
     const host = req.headers.host;

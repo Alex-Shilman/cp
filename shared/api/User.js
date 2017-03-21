@@ -5,4 +5,9 @@ export default class UserApi extends Base {
         debugger;
         return this.apiClient.post(`auth/signup`, params);
     }
+
+    login(params, query){
+        debugger;
+        return this.apiClient.post(`auth/login`, params);
+    }
 }

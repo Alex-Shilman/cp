@@ -13,7 +13,7 @@ import _find from 'lodash/find';
 var carMakes = require('../../../../carMakes.json');
 var tabsValues = [{value: "used", desc: "Used Cars"}, {value: "new", desc:"New"}, {value: "certified", desc: "Certified Pre-Owned"}];
 
-(process.env.BROWSER) && require('./SearchTabs.scss');
+(process.env.BROWSER) && require('./SearchTabs.less');
 
 @withRouter
 export default class SearchTabs extends Component{

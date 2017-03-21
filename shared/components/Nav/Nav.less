@@ -1,3 +1,5 @@
+@import "../../assets/palette.less";
+
 .cp-Nav{
   background-color: rgba(0, 0, 0, 0.7);
   background-image:none;
@@ -5,6 +7,29 @@
   color:white;
   z-index:99999;
   box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;
+
+  .navbar-brand{
+    .cp-Nav__Block{
+      display: inline-block;
+      color:white;
+      background:@primary-0-color;
+      position:relative;
+      top:-13px;
+      padding:10px;
+      font-size:25px;
+      height:59px;
+    }
+
+    .cp-Nav__Text{
+      position:relative;
+      top:-13px;
+      left:3px;
+    }
+  }
+
+  .cp-Nav__UserNav > li > a{
+    color: @primary-0-color!important;
+  }
 
   .cp-Nav_User{
     min-width:20px;

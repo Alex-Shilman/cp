@@ -63,12 +63,14 @@ export default class SignupForm extends Component {
 
               <Field
                   name="password"
+                  type="password"
                   component={this._renderTextField}
                   label="Password"
               />
 
               <Field
                   name="confirm_password"
+                  type="password"
                   component={this._renderTextField}
                   label="Confirm Password"
               />

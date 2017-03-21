@@ -14,12 +14,14 @@ export const signup = (params = {}, query = {}) => {
     return (dispatch, getState) => {
         dispatch({ type: SIGNUP });
 
-        return api.user.signup(params, query).then(data => {
+        return api.user.signup(params, query).then(resp => {
+            debugger;
            dispatch({
                type: SIGNUP_SUCCESS,
-               payload: data
+               payload: resp
            });
         }).catch(error => {
+            debugger;
             dispatch({
                type: SIGNUP_ERROR,
                error
@@ -28,8 +30,24 @@ export const signup = (params = {}, query = {}) => {
     }
 }
 
-export const login = ({params = {}, query = {}}) => {
+export const login = (params = {}, query = {}) => {
+    debugger;
     return (dispatch, getState) => {
+        debugger;
+        dispatch({ type: LOGIN });
 
+        return api.user.login(params, query).then(resp => {
+            debugger;
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload: resp
+            });
+        }).catch(error => {
+            debugger;
+            dispatch({
+                type: LOGIN_ERROR,
+                error
+            });
+        });
     }
 }

@@ -1,50 +1,54 @@
-.cp-Nav {
-  background-color: rgba(0, 0, 0, 0.7);
-  background-image: none;
-  border-color: #080808;
-  color: white;
-  z-index: 99999;
-  box-shadow: rgba(0, 0, 0, 0.15686) 0px 3px 10px, rgba(0, 0, 0, 0.22745) 0px 3px 10px; }
-  .cp-Nav .cp-Nav_User {
-    min-width: 20px; }
-  .cp-Nav .cp-Nav_User-Person {
-    width: 22px;
-    margin-right: 10px; }
-  .cp-Nav .cp-Nav_User-Avatar {
-    width: 23px;
-    border-radius: 100%;
-    margin-right: 10px; }
-  .cp-Nav .navbar-nav a {
-    color: white !important; }
-    .cp-Nav .navbar-nav a:hover, .cp-Nav .navbar-nav a:focus {
-      background-image: none;
-      background: none;
-      box-shadow: none;
-      color: #ff690f !important; }
-  .cp-Nav .navbar-nav .open a {
-    background-image: none;
-    background: none;
-    box-shadow: none;
-    color: #ff690f; }
-    .cp-Nav .navbar-nav .open a:hover, .cp-Nav .navbar-nav .open a:focus {
-      background-image: none;
-      background: none;
-      box-shadow: none;
-      color: #ff690f; }
-  .cp-Nav ul.dropdown-menu {
-    margin-top: 7px; }
-    .cp-Nav ul.dropdown-menu:before {
-      content: "\e253";
-      position: absolute !important;
-      top: -10px !important;
-      left: 10px;
-      /* background: white; */
-      display: inline-block;
-      font-family: 'Glyphicons Halflings';
-      font-style: normal;
-      font-weight: 400;
-      line-height: 1;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale; }
-    .cp-Nav ul.dropdown-menu a {
-      color: black !important; }
+/*
+Syntax error: File to import not found or unreadable: ../../assets/palette.less.
+              Load path: /Users/alexshilman/Sites/CarPatron/shared/components/Nav
+        on line 1 of Nav.scss
+
+1: @import "../../assets/palette.less";
+2: 
+3: .cp-Nav{
+4:   background-color: rgba(0, 0, 0, 0.7);
+5:   background-image:none;
+6:   border-color: #080808;
+
+Backtrace:
+Nav.scss:1
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/import_node.rb:67:in `rescue in import'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/import_node.rb:45:in `import'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/import_node.rb:28:in `imported_file'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/import_node.rb:37:in `css_import?'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:217:in `visit_import'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/tree/root_node.rb:20:in `render'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/engine.rb:315:in `_render'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/engine.rb:262:in `render'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/plugin/compiler.rb:341:in `update_stylesheet'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/plugin/compiler.rb:201:in `each'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/exec.rb:432:in `watch_or_update'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/exec.rb:315:in `process_result'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/exec.rb:41:in `parse'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/lib/sass/exec.rb:21:in `parse!'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.8/bin/scss:9:in `<top (required)>'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/bin/scss:19:in `load'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/bin/scss:19:in `<main>'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/bin/ruby_noexec_wrapper:14:in `eval'
+/Users/alexshilman/.rvm/gems/ruby-1.9.3-p392/bin/ruby_noexec_wrapper:14:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: ../../assets/palette.less.\A               Load path: /Users/alexshilman/Sites/CarPatron/shared/components/Nav\A         on line 1 of Nav.scss\A \A 1: @import \"../../assets/palette.less\";\A 2: \A 3: .cp-Nav{\A 4:   background-color: rgba(0, 0, 0, 0.7);\A 5:   background-image:none;\A 6:   border-color: #080808;"; }
