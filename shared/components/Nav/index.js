@@ -79,7 +79,7 @@ export default class Navigation extends Component{
                                 }
                                 {
                                     (user && user.profile)
-                                        && <LinkContainer to="user/profile">
+                                        && <LinkContainer to="/user/profile">
                                                 <MenuItem eventKey={4.1}>My Profile</MenuItem>
                                            </LinkContainer>
                                 }

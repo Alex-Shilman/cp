@@ -6,6 +6,8 @@ import Textfield                from 'react-mdl/lib/Textfield';
 import Button                   from 'react-mdl/lib/Button';
 import { signup }               from '../../../../actions/user';
 
+(process.env.BROWSER) && require('./SignupForm.less');
+
 @connect(null, dispatch => (
     bindActionCreators({
         handleSignup: signup
