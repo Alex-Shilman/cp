@@ -41,7 +41,7 @@ class Cars extends Component {
         return(
           <Container
              className="cp-Cars"
-             title="Car List">
+             title="">
               {
                   (isLoading)
                     ? <Spinner />

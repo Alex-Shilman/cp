@@ -2,6 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import Footer                          from '../../components/Footer';
 import Navigation                      from '../../components/Nav';
 import LoginDialog                     from '../../components/LoginDialog';
+import { connect }                     from 'react-redux';
+import { bindActionCreators }          from 'redux';
+import { showLogin, hideLogin }        from '../../actions/user';
 
 if(process.env.BROWSER){
     require( 'react-widgets/dist/css/react-widgets.css');
@@ -10,35 +13,30 @@ if(process.env.BROWSER){
 
 
 
-
+@connect((state, ownProps) => ({
+    user: state.user
+}), dispatch => (
+    bindActionCreators({
+        showLogin, hideLogin
+    }, dispatch)
+))
 export default class App extends Component{
-    state = {
-        isLoggingIn: false
-    }
-
+   
     static propTypes = {
        children: PropTypes.object
     }
 
-    signIn = () => {
-        this.setState({ isLoggingIn: true });
-    }
-
-    handleClose = () => {
-        this.setState({ isLoggingIn: false });
-    }
-
     render(){
-        const { children }    = this.props;
-        const { isLoggingIn } = this.state;
+        const { children, showLogin, hideLogin, user: { isShowLogin } }    = this.props;
+
         return(
             <div className='cp-App'>
-                <Navigation signIn={this.signIn}/>
+                <Navigation signIn={showLogin}/>
                 { children }
 
                 <LoginDialog
-                    isOpen={isLoggingIn}
-                    onRequestClose={this.handleClose}
+                    isOpen={isShowLogin}
+                    onRequestClose={hideLogin}
                 />
                 <Footer/>
             </div>
