@@ -7,6 +7,7 @@ import MenuItem                 from 'react-bootstrap/lib/MenuItem';
 import { LinkContainer }        from 'react-router-bootstrap'
 import { connect }              from 'react-redux';
 
+
 (process.env.Browser) && require('./Nav.less');
 
 const UserIcon = ({
@@ -22,7 +23,7 @@ const UserIcon = ({
     </span>
 )
 
-
+//<span className="cp-Nav__Block-Logo">Cp</span>
 
 @connect((state, ownProps) => ({
     user: state.user
@@ -49,9 +50,19 @@ export default class Navigation extends Component{
                         <Navbar.Brand>
                             <a href="/">
                                 <div className="cp-Nav__Block">
-                                    <span className="cp-Nav__Block-Logo">Cp</span>
+                                    <img
+                                        className="cp-Nav__Block__LogoImg-Main"
+                                        src="/images/CP-1.png"
+                                        alt="CP image"
+                                    />
                                 </div>
-                                <span className="cp-Nav__Text">CarPatron</span>
+                                <span className="cp-Nav__Text">
+                                    <img
+                                        className="cp-Nav__Text__LogoImg-Secondary"
+                                        src="/images/carpatron-orange.png"
+                                        alt="Car Patron imge"
+                                    />
+                                </span>
                             </a>
                         </Navbar.Brand>
                     </Navbar.Header>

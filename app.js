@@ -4,6 +4,7 @@ import express              from 'express';
 import path                 from 'path';
 import logger               from 'morgan';
 import helmet               from 'helmet';
+import favicon              from 'serve-favicon';
 import mongoose             from 'mongoose';
 import isomorphic           from './server/routes/isomorphic';
 import webpack              from 'webpack';
@@ -30,11 +31,9 @@ if(env === 'development'){
         }));
 
         app.use(webpackHotMiddleware(compiler, {
-            log: console.log
-            /*,
+            log: console.log,
              path: '/__webpack_hmr',
              heartbeat: 10 * 1000
-             */
         }));
     })();
 }
@@ -42,10 +41,7 @@ if(env === 'development'){
 // view engine setup
 app.set('views', path.join(__dirname, 'server/views'));
 app.set('view engine', 'ejs');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 /* Mongoose */

@@ -1,19 +1,19 @@
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import serializeJs  from 'serialize-javascript';
-import { Provider } from 'react-redux';
+import React                    from 'react';
+import { renderToString }       from 'react-dom/server';
+import serializeJs              from 'serialize-javascript';
+import { Provider }             from 'react-redux';
 import { RouterContext, match } from 'react-router';
-import escapeHTML from 'lodash/escape';
-import configureStore from '../../shared/store';
-import createRootRoute from '../../shared/routes';
-import clientConfig from '../../shared/config';
-import { fetchComponentsData } from '../utils';
+import pick                     from 'lodash/pick';
+import configureStore           from '../../shared/store';
+import createRootRoute          from '../../shared/routes';
+import clientConfig             from '../../shared/config';
+import { fetchComponentsData }  from '../utils';
 
 module.exports = (req, res) => {
     console.log('-----Isomorphic-----');
     console.log('User Is', req.user);
-
-    let store = configureStore({user: req.user});
+    let user = req.user && { authenticated: true, ...pick(req.user, ['email', 'profile'])};
+    let store = configureStore({user});
     let routes = createRootRoute(store);
     const host = req.headers.host;
     match({

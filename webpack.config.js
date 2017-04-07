@@ -77,8 +77,11 @@ var config = {
             },
 
             {
-                test: /\.(png|gif)$/,
-                loader: 'url-loader?mimetype=image/png'
+                test: /\.(png|jpg|gif)$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 25000
+                }
             }
         ]
     },
