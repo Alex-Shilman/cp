@@ -55,7 +55,7 @@ exports.postSignUp = (req, res, next) => {
             return res.json({errors: {msg: 'Account with that email address already exists'}});
         }
 
-        const user = new User();
+        const user        = new User();
         user.email        = email;
         user.password     = password;
         user.local        = 'local';

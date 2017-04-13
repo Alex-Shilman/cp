@@ -13,8 +13,8 @@ export const loadCarList = ({params = {}, query = {}}) => {
 
         return api.cars.show(params, query).then(data => {
             dispatch({
-                payload: data,
-                type: LOAD_CARLIST_SUCCESS
+                type: LOAD_CARLIST_SUCCESS,
+                payload: data
             });
         }).catch(error => {
             dispatch({

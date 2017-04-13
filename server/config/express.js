@@ -6,6 +6,8 @@ import logger       from 'morgan';
 import connectRedis from 'connect-redis';
 import redis        from 'redis';
 import flash        from 'express-flash';
+import config       from '../../etc/server-config.json';
+import { fork }     from 'child_process';
 
 export default function (app, passport) {
     app.use(helmet());
@@ -35,14 +37,44 @@ export default function (app, passport) {
         resave: true,
         ephemeral: true,
         saveUninitialized: true,
-        key: 'sessionID',
-        secret: 'some secret xxx',
+        key: config.session.key,
+        secret: config.session.secret,
         cookie: { httpOnly: true, secure: false },
-        store: new RedisStore({ host: 'localhost', port: 6379, ttl: 28800, client: redisClient})
+        store: new RedisStore({
+            host: config.session.store.host,
+            port: config.session.store.port,
+            ttl: config.session.store.ttl,
+            client: redisClient
+        })
     }));
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(flash());
+
+    /*start child process*/
+    const child_process_1 = fork(`${__dirname}/../services/edmonds/populate_redis`, [redisClient]);
+    child_process_1.send({
+        type: 'editorials',
+        params: {
+            year: 2015,
+            make: "audi",
+            model: "a3",
+            view: "basic",
+            fmt:  "json"
+        }
+    });
+
+    child_process_1.send({
+        type: 'media',
+        params: {
+            year: 2015,
+            make: "audi",
+            model: "a3",
+            view: "basic",
+            fmt:  "json"
+        }
+    });
+
 
 }
 

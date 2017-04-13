@@ -1,7 +1,7 @@
 const renderPromise = (req, res, promise) => {
     console.log('Outside renderPromise');
     return promise.then(data => {
-        console.log('Inside renderPromise');
+        console.log('Inside renderPromise', data);
         return res.json({cars: data, status: 1 });
     }).catch(error => {
         console.error('REQUEST URL ',    req.url);

@@ -3,8 +3,10 @@ import {
     applyMiddleware,
     combineReducers
 } from 'redux';
+import {
+    showCarsReducer, userReducer, edmondsReviewsReducer
+} from '../reducers';
 import { reducer as formReducer } from 'redux-form';
-import { showCarsReducer, userReducer } from '../reducers';
 import reduxThunk from 'redux-thunk';
 
 
@@ -12,9 +14,10 @@ const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
 export function createReducer(asyncReducers) {
     return combineReducers({
-        form: formReducer,
-        cars: showCarsReducer,
-        user: userReducer,
+        form    : formReducer,
+        cars    : showCarsReducer,
+        user    : userReducer,
+        reviews : edmondsReviewsReducer,
         ...asyncReducers
     });
 }
