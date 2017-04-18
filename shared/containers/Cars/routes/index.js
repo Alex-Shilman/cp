@@ -1,4 +1,4 @@
-module.exports = (store) => {
+module.exports = store => {
     return {
         path: 'search-results/:oldnewId',
         getComponent(location, cb){
